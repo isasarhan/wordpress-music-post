@@ -9,6 +9,7 @@ class Music_Plugin
         // test if usefull
 
         add_action('add_meta_boxes', array($this, 'addDateField'));
+        add_theme_support('post-thumbnails');
 
         add_filter('template_include', array($this, 'custom_templates'));
         add_action('wp_enqueue_scripts', array($this, 'enqueue_scripts'));
@@ -30,6 +31,7 @@ class Music_Plugin
                 'menu_icon' => 'dashicons-format-audio',
                 'public' => true,
                 'exclude_from_search' => false,
+                'supports' => array('title', 'editor', 'thumbnail'),
                 'has_archive' => true,
                 'taxonomies' => array('albums', 'artists')
 
@@ -80,11 +82,9 @@ class Music_Plugin
     public function custom_templates($template)
     {
 
-        if (is_tax('artists')) {
-            return plugin_dir_path(__FILE__) . 'templates/taxonomy-artists.php';
-        } else if (is_tax('albums')) {
-            return plugin_dir_path(__FILE__) . 'templates/taxonomy-albums.php';
-        }
+        if (is_tax('artists') || is_tax('albums')) {
+            return plugin_dir_path(__FILE__) . 'templates/taxonomies.php';
+        } 
         else if (is_post_type_archive('music')) {
             return plugin_dir_path(__FILE__) . 'templates/archive-music.php';
         } else if (is_singular('music')) {

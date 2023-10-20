@@ -15,8 +15,8 @@ class CustomThemeSettings
     {
         add_submenu_page(
             'edit.php?post_type=music',
-            'Setting',
-            'Setting',
+            'Settings',
+            'Settings',
             'manage_options',
             'setting',
             array($this, 'setting_page_ui')
@@ -44,7 +44,7 @@ class CustomThemeSettings
     {
         add_settings_section(
             'setting_section',
-            'Music Plugin Setting',
+            'Music Plugin Settings',
             array($this, 'section_callback'),
             'setting_page'
         );

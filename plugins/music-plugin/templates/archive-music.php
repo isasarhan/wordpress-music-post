@@ -8,6 +8,7 @@
             </h1>
             <?php the_archive_description('<div class="taxonomy-description">', '</div>'); ?>
         </header>
+        <div class="container">
 
         <div class="post-grid p-3">
             <?php
@@ -15,21 +16,28 @@
                 while (have_posts()) {
                     the_post();
                     ?>
-                    <article id="post-<?php the_ID(); ?>" <?php post_class('grid-item'); ?>>
-                        <header class="entry-header">
-                            <?php the_title('<h2 class="entry-title"><a href="' . esc_url(get_permalink()) . '" rel="bookmark">', '</a></h2>'); ?>
-                        </header>
-                        <div class="entry-content">
-                            <?php the_excerpt(); ?>
+                    <div class="card border-success mb-3" style="max-width: 18rem;">
+                        <div class="card-header bg-transparent border-success"><?php  the_()?></div>
+                        <div class="card-body text-success">
+                            <h5 class="card-title">
+                                <?php the_title() ?>
+                            </h5>
+                            <p class="card-text">
+                                <?php the_excerpt(); ?>
+                            </p>
                         </div>
-                    </article>
-                    <?php
+                        <div class="card-footer bg-transparent border-success">
+                        <a href="<?php echo  esc_url(get_permalink())?>" class="btn text-success ">Show More</a>
+</div>
+                    </div>
+                     <?php
                 }
             } else {
                 // Display no content found message.
             }
             ?>
         </div>
+        </div>  
     </main>
 </div>
 

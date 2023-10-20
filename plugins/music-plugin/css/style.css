@@ -3,7 +3,9 @@
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
 }
-
+a{
+    text-decoration: none;
+}
 .grid-item {
     border: 1px solid #ddd;
     padding: 15px;
