@@ -3,7 +3,6 @@ get_header();
 
 
 $featured = get_option("featured_album");
-
 $album_slug = str_replace(" ", "-", $featured);
 $url = '/albums' . '/' . $album_slug;
 ?>
@@ -28,35 +27,33 @@ $url = '/albums' . '/' . $album_slug;
         </div>
     </div>
 </div>
-<div class="container">
-    <div class="row p-2 ">
-        <?php
-        $artists = get_categories('taxonomy=artists&type=music');
-        $i = 1;
-        foreach ($artists as $artist) {
-            ?>
-            <div class="col-sm-6 ">
-                <div class="card m-1">
-                    <h5 class="card-header bg-secondary text-white ">
-                        <?php echo $i; ?>
+<div class="row p-2 ">
+    <?php
+    $artists = get_categories('taxonomy=artists&type=music');
+    $i = 1;
+    foreach ($artists as $artist) {
+        ?>
+        <div class="col ">
+            <div class="card m-1">
+                <h5 class="card-header bg-secondary text-white ">
+                    <?php echo $i; ?>
+                </h5>
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <?php echo $artist->name ?>
                     </h5>
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <?php echo $artist->name ?>
-                        </h5>
-                        <p class="card-text">
-                            <?php echo $artist->description ?>
-                        </p>
-                        <a href="<?php echo (get_category_link($artist)) ?>" class="btn btn-secondary ">Show Artist Music</a>
-                    </div>
+                    <p class="card-text">
+                        <?php echo $artist->description ?>
+                    </p>
+                    <a href="<?php echo (get_category_link($artist)) ?>" class="btn btn-secondary ">Show Artist Music</a>
                 </div>
             </div>
-            
-            
-            <?php
+        </div>
+
+
+        <?php
         $i++;
     } ?>
-    </div>
 </div>
 <?php
 get_footer();

@@ -19,3 +19,6 @@ a{
 .entry-content {
     color: #555;
 }
+.btn:hover{
+    color: #4b8529;
+}

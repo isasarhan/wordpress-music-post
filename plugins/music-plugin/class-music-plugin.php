@@ -6,14 +6,15 @@ class Music_Plugin
     {
         add_action('init', array($this, 'register_post_types'));
         add_action('init', array($this, 'register_taxonomies'));
-        // test if usefull
-
+        
         add_action('add_meta_boxes', array($this, 'addDateField'));
-        add_theme_support('post-thumbnails');
-
-        add_filter('template_include', array($this, 'custom_templates'));
         add_action('wp_enqueue_scripts', array($this, 'enqueue_scripts'));
         add_action('save_post', array($this, 'saveMusicDate'));
+        add_action('before_delete_post', array($this, 'metadata_deletion'));
+        
+        add_filter('template_include', array($this, 'custom_templates'));
+        
+        add_theme_support('post-thumbnails');
 
         $this->define_admin_hooks();
     }
@@ -26,12 +27,17 @@ class Music_Plugin
                 'labels' => array(
                     'name' => 'Music',
                     'singular_name' => 'Music',
-                    
+                    'add_new_item'=> 'Add New Music',
+                    'edit_item' =>'Edit Music',
+                    'all_items'=> 'All Music',
                 ),
+                //shows new wordpress editor
+                'show_in_rest'=>true,
+                'rewrite'=>array('slug'=>'musics'),
                 'menu_icon' => 'dashicons-format-audio',
                 'public' => true,
                 'exclude_from_search' => false,
-                'supports' => array('title', 'editor', 'thumbnail'),
+                'supports' => array('title', 'editor', 'thumbnail','excerpt'),
                 'has_archive' => true,
                 'taxonomies' => array('albums', 'artists')
 
@@ -69,7 +75,11 @@ class Music_Plugin
             )
         );
     }
-
+    public function metadata_deletion($post_id) {
+        if (get_post_type($post_id) === 'music') {
+            delete_post_meta($post_id, 'date-music');
+        }
+    }
     public function register_menus()
     {
         register_nav_menus(
@@ -78,7 +88,7 @@ class Music_Plugin
             )
         );
     }
-
+   
     public function custom_templates($template)
     {
 
@@ -127,5 +137,5 @@ class Music_Plugin
             update_post_meta($post_id, '_music_date', sanitize_text_field($_POST['music_date']));
         }
     }
-
+    
 }

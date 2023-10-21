@@ -25,7 +25,7 @@
                     <div class="card-body">
                         <h5 class="card-title"><?php the_title()?></h5>
                         <p class="card-text">
-                            <?php the_excerpt(); ?>
+                            <?php echo wp_trim_words(get_the_excerpt(), 10); ?>
                         </p>
                         <a href="<?php echo  esc_url(get_permalink())?>" class="btn btn-primary">Show More</a>
                     </div>
