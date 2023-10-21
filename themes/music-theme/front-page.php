@@ -33,7 +33,7 @@ $url = '/albums' . '/' . $album_slug;
     $i = 1;
     foreach ($artists as $artist) {
         ?>
-        <div class="col ">
+        <div class="col-md-4 col-xs-12 p-2">
             <div class="card m-1">
                 <h5 class="card-header bg-secondary text-white ">
                     <?php echo $i; ?>
