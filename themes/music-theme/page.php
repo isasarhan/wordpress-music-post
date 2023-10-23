@@ -9,9 +9,7 @@ if (have_posts()) {
         ?>
         <div id="post-<?php the_ID(); ?>" <?php post_class(); ?> class="container my-5">
             <div class="p-5 text-center bg-body-tertiary rounded-3">
-                <svg class="bi mt-4 mb-3" style="color: var(--bs-indigo);" width="100" height="100">
-                    <use xlink:href="#bootstrap" />
-                </svg>
+                
                 <h1 class="text-body-emphasis">
                     <?php the_title(); ?>
                 </h1>
@@ -20,11 +18,8 @@ if (have_posts()) {
 
                 </p>
                 <div class="d-inline-flex gap-2 mb-5">
-                    <a href="<?php echo site_url()?>" class="d-inline-flex align-items-center btn btn-primary btn-lg px-4 rounded-pill" type="button">
+                    <a href="<?php echo site_url()?>" class="d-inline-flex align-items-center btn btn-secondary btn-lg px-4 rounded-pill" type="button">
                         Go Home
-                        <svg class="bi ms-2" width="24" height="24">
-                            <use xlink:href="#arrow-right-short" />
-                        </svg>
                     </a>
 
                 </div>
@@ -37,6 +32,6 @@ if (have_posts()) {
 }
 ?>
 
-< <?php
+<?php
 // Include WordPress footer
 get_footer();

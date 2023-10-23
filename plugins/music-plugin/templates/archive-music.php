@@ -1,8 +1,8 @@
 <?php get_header(); ?>
 
 <div id="primary" class="p-1">
-    <div class="container">
-        <h1>
+    <div class="container ">
+        <h1 class="p-2">
             <?php echo 'All ' . get_post_type(); ?>
         </h1>
         <div class="post-grid p-3">

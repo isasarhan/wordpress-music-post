@@ -9,7 +9,7 @@ get_header(); ?>
         if (have_posts()) {
             the_post();
             ?>
-            <div>
+            <div class="container p-3 p-md-5">
                 <?php
                 $post_id = get_the_ID();
 

@@ -2,7 +2,7 @@
 /*
 Plugin Name: Music Plugin
 Description: WP plugin assesment
-Version: 1.0
+Version: 2.0
 Author: Issa Sarhan
 */
 
@@ -27,4 +27,5 @@ register_deactivation_hook(__FILE__, array('WCM_Setup_Demo_Class', 'on_deactivat
 register_uninstall_hook(__FILE__, array('WCM_Setup_Demo_Class', 'on_uninstall'));
 
 add_action('plugins_loaded', array('WCM_Setup_Demo_Class', 'init'));
+
 run_plugin();

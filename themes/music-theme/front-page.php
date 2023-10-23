@@ -3,8 +3,11 @@ get_header();
 
 
 $featured = get_option("featured_album");
-$album_slug = str_replace(" ", "-", $featured);
-$url = '/albums' . '/' . $album_slug;
+$taxonomy = 'albums'; // Replace with the appropriate taxonomy name.
+
+$term = get_term($featured, $taxonomy);
+
+$url = '/albums' . '/' . $term->slug;
 ?>
 
 <!-- Hero Section-->
@@ -18,7 +21,7 @@ $url = '/albums' . '/' . $album_slug;
                 <h4 class="p-4">Featured Album</h4>
                 <br />
                 <h5>
-                    <?php echo $featured; ?>
+                    <?php echo $term->name; ?>
                 </h5>
                 <br />
                 <a class="btn m-4 btn-outline-light btn-lg" href="<?php echo home_url($url) ?>" role="button">Show All

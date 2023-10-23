@@ -114,7 +114,7 @@ class CustomThemeSettings
             <option value="">Select an option</option>
             <?php
             foreach ($albums as $album) {
-                echo '<option  value="' . esc_attr($album->name) . '" ' . '' . '>' . esc_html($album->name) . '</option>';
+                echo '<option  value="' . esc_attr($album->term_id) . '" ' . '' . '>' . esc_html($album->name) . '</option>';
             }
             ?>
         </select>
